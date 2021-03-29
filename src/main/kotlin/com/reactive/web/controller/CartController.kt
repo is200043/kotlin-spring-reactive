@@ -1,6 +1,7 @@
 package com.reactive.web.controller
 
 import com.reactive.db.entity.Cart
+import com.reactive.db.repo.CartRepo
 import com.reactive.web.service.CartService
 import com.reactive.web.service.ProductService
 import org.springframework.web.bind.annotation.*
@@ -9,7 +10,7 @@ import reactor.core.publisher.Mono
 
 @RestController
 @RequestMapping("/carts")
-class CartController(val productService: ProductService, val cartService: CartService) {
+class CartController(val productService: ProductService, val cartService: CartService, val cartRepo: CartRepo) {
 
     @GetMapping("/{cartId}")
     fun getCart(@PathVariable cartId: String): Flux<Cart> {
@@ -17,9 +18,9 @@ class CartController(val productService: ProductService, val cartService: CartSe
     }
 
     @PostMapping
-    fun postCart(@RequestParam cartId: String, @RequestParam productId: Long): Mono<Void> {
+    fun postCart(@RequestParam cartId: String, @RequestParam productId: Long, @RequestParam productQty: Int): Mono<Void> {
         productService.getProductById(productId).log()
-            .subscribe { cartService.addProduct(Cart(null, cartId, productId, 99, it.price)) }
+            .subscribe { cartService.addProduct(Cart(null, cartId, productId, productQty, it.price)) }
         return Mono.empty();
     }
 }
