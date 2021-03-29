@@ -1,6 +1,7 @@
 package com.reactive.db.entity
 
 import org.springframework.data.annotation.Id
+import org.springframework.data.annotation.Transient
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 
@@ -12,5 +13,5 @@ data class Cart(
     @Column("product_qty") var productQty: Int = 0,
     @Column("product_price") var productPrice: Double = 0.0
 ) {
-
+    @Transient val productAmount: Double = productQty * productPrice
 }

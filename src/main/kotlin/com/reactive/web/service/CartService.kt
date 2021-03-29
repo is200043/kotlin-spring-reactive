@@ -25,4 +25,11 @@ class CartService(val cartRepo: CartRepo) {
                 cartRepo.save(it).subscribe()
             }
     }
+
+    fun delProduct(cart: Cart) {
+        cartRepo.findCartByCartIdAndProductId(cart.cartId, cart.productId)
+            .subscribe {
+                cartRepo.delete(it).subscribe()
+            }
+    }
 }

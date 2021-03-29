@@ -19,8 +19,14 @@ class CartController(val productService: ProductService, val cartService: CartSe
 
     @PostMapping
     fun postCart(@RequestParam cartId: String, @RequestParam productId: Long, @RequestParam productQty: Int): Mono<Void> {
-        productService.getProductById(productId).log()
+        productService.getProductById(productId)
             .subscribe { cartService.addProduct(Cart(null, cartId, productId, productQty, it.price)) }
+        return Mono.empty();
+    }
+
+    @DeleteMapping
+    fun delCart(@RequestParam cartId: String, @RequestParam productId: Long): Mono<Void> {
+        cartService.delProduct(Cart(null, cartId, productId))
         return Mono.empty();
     }
 }
