@@ -1,19 +1,24 @@
-# Spring Boot R2DBC
+# Kotlin Spring Boot R2DBC H2 + Redis
 
-This project aims to give an idea on how to work with the R2DBC and Spring Data R2DBC.
+ตัวอย่าง Kotlin Spring Reactive, Spring Data R2DBC, R2DBC H2, Redis Reactive
 
 ## Getting Started
 
 `./mvnw spring-boot:run`, the application now runs localhost:8080.
 
-## Getting Started Redis
+## Getting Started Redis not working
 
-`docker pull redis:6.2.1-alpine3.13`
+`docker run -d \
+-p 6379:6379 \
+--name redis-server \
+--restart=always \
+redis:6.2.1-alpine3.13 \
+--requirepass flau1gith-MOOB3grud`
 
-`docker run --name redis -p 6379:6379 -d redis:6.2.1-alpine3.13 redis-server --appendonly yes`
+`redis-cli -h 127.0.0.1 -p 6379 -a flau1gith-MOOB3grud`
 
-## API
 
-`http://localhost:8080/products`
+## Docs
+https://docs.spring.io/spring-data/data-redis/docs/current/reference/html/#redis:reactive
 
-`http://localhost:8080/products/1`
+https://redis.io/commands

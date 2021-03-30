@@ -1,21 +1,14 @@
 logging:
   level:
     org.springframework: INFO
-    org.springframework.r2dbc: DEBUG
-
+    org.springframework.r2dbc: OFF
+    io.r2dbc.h2.client.SessionClient: DEBUG
 spring:
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   r2dbc:
     url: r2dbc:h2:mem:///test?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name: sa
     password:
-#  h2:
-#    console:
-#      path: /h2-console
-#      enabled: true
-#      settings.trace: true
-#  redis:
-#    host: 127.0.0.1
-#    port: 6379
-#  jackson.serialization.indent_output: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#      url: redis://flau1gith-MOOB3grud@redis-server:6379
