@@ -11,4 +11,4 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-#      url: redis://flau1gith-MOOB3grud@redis-server:6379
+#    url: redis://flau1githMOOB3grud@redis-server:6379

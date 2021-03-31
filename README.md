@@ -8,14 +8,9 @@
 
 ## Getting Started Redis not working
 
-`docker run -d \
--p 6379:6379 \
---name redis-server \
---restart=always \
-redis:6.2.1-alpine3.13 \
---requirepass flau1gith-MOOB3grud`
+`docker run -d --name redis-server -p 6379:6379 redis:6.2.1-alpine3.13` 
 
-`redis-cli -h 127.0.0.1 -p 6379 -a flau1gith-MOOB3grud`
+`redis-cli -h 127.0.0.1 -p 6379`
 
 
 ## Docs
